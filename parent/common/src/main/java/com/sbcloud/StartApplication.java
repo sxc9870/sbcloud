@@ -1,13 +1,12 @@
-package com.sbcloud.common;
+package com.sbcloud;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class StartApplication 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
     }
 }

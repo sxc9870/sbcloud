@@ -13,6 +13,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<start-class>com.sbcloud.StartApplication</start-class>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -20,11 +21,9 @@
 		<version>2.1.4.RELEASE</version>
 	</parent>
 	<dependencies>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -40,6 +39,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>${start-class}</mainClass>
+				</configuration>
 			</plugin>
 
 			<plugin>
@@ -59,7 +61,6 @@
 					<skip>true</skip>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
 	<repositories>
@@ -95,5 +96,6 @@
 
 	<modules>
 		<module>common</module>
+		<module>eureka</module>
 	</modules>
 </project>
