@@ -1,6 +1,6 @@
 spring:
    profiles:
-    active: dev2
+    active: dev
 
 ---
 spring:
@@ -40,7 +40,7 @@ eureka:
      #改变 registered-replicas 和unavailable-replicas 的地址
      ##客户端默认去这个地址找注册中心
      service-url:
-       defaultZone: http://localhost:10000/eureka,http://localhost:10001/eureka,http://localhost:10002/eureka
+       defaultZone: http://tomcat1:10000/eureka,http://tomcat2:10000/eureka,http://tomcat3:10002/eureka
   server:
     ##启动同步等待
     wait-time-in-ms-when-sync-empty: 0
