@@ -27,6 +27,6 @@ eureka:
     ##启动同步等待
     wait-time-in-ms-when-sync-empty: 0
     ##关闭自我保护
-    enable-self-preservation: true
+    enable-self-preservation: false
     ##数据更新间隔
-    peer-eureka-nodes-update-interval-ms: 600000  
+    peer-eureka-nodes-update-interval-ms: 6000
