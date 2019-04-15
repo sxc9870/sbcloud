@@ -1,0 +1,11 @@
+bootstrap: on
+spring:
+  application:
+    name: eureka-dev1
+  profiles:
+    active: test
+  cloud:
+    config:
+      #这个要跟yml同名 后面active可以省略
+      name: eurekaserver
+      uri: http://localhost:8888

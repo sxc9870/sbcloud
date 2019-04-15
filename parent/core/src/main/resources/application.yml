@@ -6,9 +6,9 @@ spring:
 spring:
   profiles: dev
   application:
-    name: core
+    name: core4
 server:
-  port: 20000
+  port: 20004
 
 eureka:
   instance:
@@ -19,5 +19,5 @@ eureka:
      # 是否注册自己
      register-with-eureka: true
      service-url:
-       defaultZone: http://localhost:10000/eureka
+       defaultZone: http://localhost:10002/eureka
    
