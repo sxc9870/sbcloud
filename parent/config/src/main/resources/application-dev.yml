@@ -1,0 +1,9 @@
+server:
+  port: 8888
+  
+spring:  application:    name: config-server
+  cloud:    config:      server:        git:          uri: ${user.dir}\src\main\resources\configs
+          
+          
+#端点 监控所有??
+management:  endpoints:    web:      exposure:        include: "*"         
