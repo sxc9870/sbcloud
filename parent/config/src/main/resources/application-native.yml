@@ -1,11 +1,8 @@
 server:
   port: 8888
-  
 spring:  application:    name: config-server
   cloud:    config:      server:
-#        git:#          uri: ${user.dir}\src\main\resources\configs
         native:
-          search-locations: classpath:configs/
-          
+           search-locations: classpath:configs/
 #端点 以配置的方式 开关暴露的监控信息 actuator/health 访问
 management:  endpoints:    web:      exposure:        include: "*"         
