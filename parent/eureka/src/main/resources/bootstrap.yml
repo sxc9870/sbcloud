@@ -4,10 +4,10 @@ spring:
     name: eureka
   profiles:
     active: dev
-#  cloud:
-#    config:
-#      #这个要跟yml同名 后面active可以省略
-#      name: eurekaserver
-#      uri: http://localhost:8888
-#      username: sxc
-#      password: 123456
+  cloud:
+    config:
+      #这个要跟yml同名 后面active可以省略
+      name: eurekaserver
+      uri: http://localhost:8881
+      username: sxc
+      password: 123456

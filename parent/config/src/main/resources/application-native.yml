@@ -1,5 +1,6 @@
+
 server:
-  port: 8888
+  port: 8881
 spring:  application:    name: config-server
   cloud:    config:      server:
         native:
@@ -15,12 +16,5 @@ spring:  application:    name: config-server
     username: guest
     password: guest
     port: 5672                
-eureka:
-  client:
-     fetch-registry: true
-     register-with-eureka: true
-     service-url:
-       defaultZone: http://localhost:10002/eureka,http://localhost:10001/eureka
-     enable: true
 #端点 以配置的方式 开关暴露的监控信息 actuator/health 访问
 management:  endpoints:    web:      exposure:        include: "*"         
