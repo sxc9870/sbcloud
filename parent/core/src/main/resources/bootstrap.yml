@@ -1,16 +1,14 @@
 spring:
   application:
-    name: eureka-core
+    name: eurekaclient
   profiles:
-    active: test
+    active: dev
   cloud:
     config:
-      #这个要跟yml同名 后面active可以省略
-      name: eurekaclient
-      uri: http://localhost:8888   
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-         
+      username: sxc
+      password: 123456
+      
+        
+  
+        
+             

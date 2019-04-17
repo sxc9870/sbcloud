@@ -1,2 +1,31 @@
 
-   
+eureka:
+  instance:
+     hostname: eureka2
+  client:
+     #检索服务
+     fetch-registry: true
+     # 是否注册自己
+     register-with-eureka: true
+     service-url:
+       defaultZone: http://localhost:10001/eureka     
+spring:
+   cloud:
+    config:
+      #这个要跟yml同名 后面active可以省略
+      name: eurekaclient
+      discovery:
+        service-id: config-server
+        enabled: true    
+        
+    
+          
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  
+        
+             

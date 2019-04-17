@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: native
+    ##引入账号密码机制 需要导入starter-security
+        
+encrypt:
+  #key: "sxc9999"
+  keyStore:
+    location: classpath:/server.jks   # server.jks的配置文件的路径
+    password: studyjava      # 设置store的密码 
+    alias: mytestkey
+    secret: changeit      # keypass密码
+#keytool -genkeypair -alias sxc-key -keyalg RSA 
+#-dname "CN=Config Server,OU=Xuqian,O=My Own Company,L=Shanghai,S=Shanghai,C=CN" 
+#-keypass sxcsxc -keystore server.jks -storepass sxcsxc
+##http://sxc:123456@localhost:8888/encrypt -d 23456789
+#!!!下载去JCE限制的策略文件  java.security.InvalidKeyException: Illegal key size 秘钥长度过长
+#解密会有Data must not be longer than 256 bytes 问题.. url编码导致密文丢失字符导致 用下面的方法可以破解用postman也可以解决
+#$ CIPHER=`curl localhost:8888/encrypt -d my%2Bpass`
+#$ curl localhost:8888/decrypt -d $CIPHER
+#my+pass
+##also if you use Content-Type: text/plain:
+
+#$ CIPHER=`curl -H "Content-Type: text/plain" localhost:8888/encrypt -d my+pass`
+#$ curl localhost:8888/decrypt -d $CIPHER
+# my+pass
+#or with --data-urlencode:
+
+#$ CIPHER=`curl localhost:8888/encrypt --data-urlencode my+pass`
+#$ curl localhost:8888/decrypt -d $CIPHER
+#my+pass
+

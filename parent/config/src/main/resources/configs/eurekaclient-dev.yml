@@ -1,4 +1,5 @@
-cloud: on
+cloud: '123'
+abc: 123
 server:
   port: 20001
 eureka:

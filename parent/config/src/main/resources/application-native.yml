@@ -4,5 +4,23 @@ spring:  application:    name: config-server
   cloud:    config:      server:
         native:
            search-locations: classpath:configs/
+        encrypt:
+          enabled: true
+  security:
+    user:
+      name: sxc
+      password: 123456
+  rabbitmq:
+    host: 192.168.239.135
+    username: guest
+    password: guest
+    port: 5672                
+eureka:
+  client:
+     fetch-registry: true
+     register-with-eureka: true
+     service-url:
+       defaultZone: http://localhost:10002/eureka,http://localhost:10001/eureka
+     enable: true
 #端点 以配置的方式 开关暴露的监控信息 actuator/health 访问
 management:  endpoints:    web:      exposure:        include: "*"         

@@ -1,6 +1,5 @@
 server:
   port: 8888
-  
 spring:
   application:
     name: config-server
@@ -11,10 +10,8 @@ spring:
           uri: https://github.com/sxc9870/sbcloud.git
           force-pull: true
           search-paths: parent/configs
+        encrypt:          enabled: true
+
 #端点 以配置的方式 开关暴露的监控信息 actuator/health 访问
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+
          
