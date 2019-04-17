@@ -1,3 +1,4 @@
+eurekaUrl: http://localhost:10002/eureka,http://localhost:10001/eureka
 spring:
   application:
     name: eurekaclient
@@ -7,8 +8,15 @@ spring:
     config:
       username: sxc
       password: 123456
-      
-        
-  
-        
-             
+      #这个要跟yml同名 后面active可以省略
+      name: eurekaclient
+      discovery:
+        service-id: config-server
+        enabled: true        
+eureka:
+  client:
+     fetch-registry: true
+     register-with-eureka: true
+     service-url:
+       defaultZone: ${eurekaUrl}
+     enable: true            

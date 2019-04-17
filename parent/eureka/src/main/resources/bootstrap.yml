@@ -8,6 +8,11 @@ spring:
 #    config:
 #      #这个要跟yml同名 后面active可以省略
 #      name: eurekaserver
-#      uri: http://localhost:8888
+#      uri: http://localhost:8881
 #      username: sxc
 #      password: 123456
+# rabbitmq:
+#    host: 192.168.239.135
+#    username: guest
+#    password: guest
+#    port: 5672 

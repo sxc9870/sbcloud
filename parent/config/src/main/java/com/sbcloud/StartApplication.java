@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
 @EnableConfigServer
-@EnableEurekaClient
+//@EnableEurekaClient
 public class StartApplication {
 
 	public static void main(String[] args) {
