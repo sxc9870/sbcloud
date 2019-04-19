@@ -15,6 +15,7 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClientConfiguration;
 import org.springframework.cloud.netflix.ribbon.eureka.EurekaRibbonClientConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -30,6 +31,7 @@ import com.netflix.niws.loadbalancer.NIWSDiscoveryPing;
 @EnableEurekaClient
 @RefreshScope // 自动刷新配置变更 
 @EnableDiscoveryClient
+@ComponentScan("com.sbcloud")
 //@RibbonClient(name="default.foo",configuration = Foo.class)
 public class StartApplication {
 
