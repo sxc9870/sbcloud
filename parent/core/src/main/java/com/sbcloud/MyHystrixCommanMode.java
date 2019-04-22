@@ -30,7 +30,7 @@ public class MyHystrixCommanMode extends HystrixCommand<Object> {
                                 // 配置隔离方式：默认采用线程池隔离。还有一种信号量隔离方式,
                                 // .withExecutionIsolationStrategy(HystrixCommandProperties.ExecutionIsolationStrategy.SEMAPHORE)
                                 // 超时时间500毫秒 服务端超过时间未响应 则客户端自动降级
-                                .withExecutionTimeoutInMilliseconds(5000)
+                                .withExecutionTimeoutInMilliseconds(100)
                         // 信号量隔离的模式下，最大的请求数。和线程池大小的意义一样
                         // .withExecutionIsolationSemaphoreMaxConcurrentRequests(2)
                         // 熔断时间（熔断开启后，各5秒后进入半开启状态，试探是否恢复正常）
@@ -41,7 +41,7 @@ public class MyHystrixCommanMode extends HystrixCommand<Object> {
                         // 线程池大小  监控的线程池如果超过范围则降级
                         .withCoreSize(1)
                         //允许最大的缓冲区大小
-//                       .withMaxQueueSize(2)
+                    //  .withMaxQueueSize(0)
                 ));
         // super(HystrixCommandGroupKey.Factory.asKey("DnUser-command"),100);
         this.id = id;

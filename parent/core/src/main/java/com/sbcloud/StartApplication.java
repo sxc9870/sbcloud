@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -32,6 +33,7 @@ import com.netflix.niws.loadbalancer.NIWSDiscoveryPing;
 @RefreshScope // 自动刷新配置变更 
 @EnableDiscoveryClient
 @ComponentScan("com.sbcloud")
+@EnableCircuitBreaker  //断路器
 //@RibbonClient(name="default.foo",configuration = Foo.class)
 public class StartApplication {
 
