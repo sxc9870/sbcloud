@@ -13,7 +13,12 @@ public class TestModel {
 	private int tid;
 	@Column(name = "tname", length = 20)
 	private String tname;
-
+	public TestModel() {
+		// TODO Auto-generated constructor stub
+	}
+	public TestModel(String name) {
+		this.tname=name;
+	}
 	public int getTid() {
 		return tid;
 	}

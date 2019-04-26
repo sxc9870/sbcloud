@@ -26,9 +26,9 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @ComponentScan("com.sbcloud")
 //@EnableCircuitBreaker // 断路器
-@EnableHystrix  //继承上面EnableCircuitBreaker
+//@EnableHystrix  //继承上面EnableCircuitBreaker
 //@RibbonClient(name="default.foo",configuration = Foo.class)
-//@EnableFeignClients
+@EnableFeignClients
 public class StartApplication {
 
 	/**

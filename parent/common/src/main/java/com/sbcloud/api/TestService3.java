@@ -12,12 +12,8 @@ import feign.Param;
 
 @FeignClient(name="eurekaclient",fallbackFactory=TestFallBack2.class)
 @Component
-public interface TestService extends MyBase{
-	@PostMapping("/test")
+public interface TestService3 extends MyBase{
+	@PostMapping("/test3")
 	public TestModel test() ;
-	
-	@Body(value = "%7B'orderNo:${orderNo}'%7D")//调用最后请求出去的就是{order:1234}
-	@PostMapping("/test2")
-	public TestModel test2(@Param("orderNo")String orderNo) ;
 }
  
