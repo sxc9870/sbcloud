@@ -1,4 +1,4 @@
-package com.sbcloud;
+package com.sbcloud.hystrix;
 
 import org.springframework.web.client.RestTemplate;
 

@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+		</dependency>	
 	</dependencies>
 
 	<!-- Package as an executable jar -->
@@ -97,5 +97,7 @@
 	<modules>
 		<module>common</module>
 		<module>eureka</module>
+		<module>config</module>
+		<module>core</module>
 	</modules>
 </project>

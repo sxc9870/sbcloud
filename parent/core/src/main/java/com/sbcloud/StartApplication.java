@@ -16,18 +16,19 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient
-@RefreshScope // 自动刷新配置变更
 @EnableDiscoveryClient
 @ComponentScan("com.sbcloud")
 //@EnableCircuitBreaker // 断路器
-@EnableHystrix  //继承上面EnableCircuitBreaker
+//@EnableHystrix  //继承上面EnableCircuitBreaker
 //@RibbonClient(name="default.foo",configuration = Foo.class)
+@EnableFeignClients
 public class StartApplication {
 
 	/**
@@ -41,14 +42,14 @@ public class StartApplication {
 
 	}
 
-	@Bean
-	@LoadBalanced // 不加无法使用ribbon的负载均衡
-	public RestTemplate restTemplate(MyIntecetper MyIntecetper) {
-		RestTemplate restTemplate = new RestTemplate();
-//		// 把自定义的ClientHttpRequestInterceptor添加到RestTemplate，可添加多个
-//		restTemplate.setInterceptors(Collections.singletonList(MyIntecetper));
-
-		return restTemplate;
-	}
+//	@Bean 有fegin后不需要,重试机制也不需要
+//	@LoadBalanced // 不加无法使用ribbon的负载均衡
+//	public RestTemplate restTemplate(MyIntecetper MyIntecetper) {
+//		RestTemplate restTemplate = new RestTemplate();
+////		// 把自定义的ClientHttpRequestInterceptor添加到RestTemplate，可添加多个
+////		restTemplate.setInterceptors(Collections.singletonList(MyIntecetper));
+//
+//		return restTemplate;
+//	}
 
 }
