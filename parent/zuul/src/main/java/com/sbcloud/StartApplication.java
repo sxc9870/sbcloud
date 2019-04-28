@@ -10,6 +10,7 @@ import java.util.concurrent.TimeoutException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -21,6 +22,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulServer;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -29,7 +31,8 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan("com.sbcloud")
 @EnableZuulProxy   //比@EnableZuulServer 强大
 public class StartApplication {
-
+	 
+ 
 	/**
 	 * @param args
 	 */

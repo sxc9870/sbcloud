@@ -25,6 +25,17 @@ zuul:
     route2:
       path: /sxc1/**
       serviceId: consume
+    sxcsxc:
+      path: /login/zuulTest
+      serviceId: consume
+    needLoginPath:
+      path: /**/**Auth
+      serviceId: consume
+      
+sxc:
+  zuul: 
+    filters:
+       needLoginRoutes: sxcsxc,needLoginPath
 ribbon:
 ##    超过 ReadTimeout 会重试  
   ReadTimeout: 5000       

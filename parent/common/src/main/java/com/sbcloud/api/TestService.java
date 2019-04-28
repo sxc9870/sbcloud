@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sbcloud.api.fallCallBack.TestFallBack2;
-import com.sbcloud.pojo.TestModel;
+import com.sbcloud.pojo.ServiceCommPojo;
 
 import feign.Body;
 import feign.Param;
@@ -14,10 +14,10 @@ import feign.Param;
 @Component
 public interface TestService extends MyBase{
 	@PostMapping("/test")
-	public TestModel test() ;
+	public ServiceCommPojo<?> test() ;
 	
 	@Body(value = "%7B'orderNo:${orderNo}'%7D")//调用最后请求出去的就是{order:1234}
 	@PostMapping("/test2")
-	public TestModel test2(@Param("orderNo")String orderNo) ;
+	public ServiceCommPojo<?> test2(@Param("orderNo")String orderNo) ;
 }
  

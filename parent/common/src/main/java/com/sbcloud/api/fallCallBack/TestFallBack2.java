@@ -3,9 +3,6 @@ package com.sbcloud.api.fallCallBack;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +10,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 import com.sbcloud.api.MyBase;
-import com.sbcloud.pojo.TestModel;
 
 import feign.hystrix.FallbackFactory;
 
@@ -50,7 +46,7 @@ public class TestFallBack2 implements FallbackFactory<MyBase>, ApplicationContex
 		InvocationHandler invocationHandler = new InvocationHandler() {
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-				return new TestModel(local.get().getLocalizedMessage());
+				return null;
 			}
 		};
 		this.proxy= Proxy.newProxyInstance(getClass().getClassLoader(), classs,

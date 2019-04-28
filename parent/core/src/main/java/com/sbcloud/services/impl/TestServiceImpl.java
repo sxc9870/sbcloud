@@ -13,6 +13,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.sbcloud.api.TestService;
 import com.sbcloud.dao.TargetRepository;
+import com.sbcloud.pojo.ServiceCommPojo;
 import com.sbcloud.pojo.TestModel;
 
 @RestController
@@ -27,7 +28,7 @@ public class TestServiceImpl implements TestService {
 
 	@Override
 	@Transactional
-	public TestModel test() {
+	public ServiceCommPojo test() {
 		System.out.println("进入test");
 		try {
 			int i = new Random().nextInt(1000) + 2500;
@@ -42,11 +43,11 @@ public class TestServiceImpl implements TestService {
 
 		// targetRepository.save(t);
 		System.out.println("退出test");
-		return t;
+		return null;
 	}
 
 	@Override
-	public TestModel test2(String orderNo) {
+	public ServiceCommPojo test2(String orderNo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

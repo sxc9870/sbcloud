@@ -14,6 +14,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.sbcloud.api.TestService;
 import com.sbcloud.api.TestService3;
 import com.sbcloud.dao.TargetRepository;
+import com.sbcloud.pojo.ServiceCommPojo;
 import com.sbcloud.pojo.TestModel;
 
 @RestController
@@ -23,7 +24,7 @@ public class TestServiceImpl2 implements TestService3 {
 	private String aaa;
 
 	@Override
-	public TestModel test() {
+	public ServiceCommPojo<?> test() {
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {

@@ -25,13 +25,6 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.eclipse.persistence/javax.persistence -->
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
-		</dependency>
-
-
 
 	</dependencies>
 
