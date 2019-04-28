@@ -1,0 +1,10 @@
+cloud: '123'
+abc: 123
+server:
+  port: 30001
+eureka:
+  client:
+     fetch-registry: true
+     register-with-eureka: true
+     service-url:
+       defaultZone: http://localhost:10001/eureka
