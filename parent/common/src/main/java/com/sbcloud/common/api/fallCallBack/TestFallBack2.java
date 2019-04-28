@@ -1,4 +1,4 @@
-package com.sbcloud.api.fallCallBack;
+package com.sbcloud.common.api.fallCallBack;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-import com.sbcloud.api.MyBase;
+import com.sbcloud.common.api.MyBase;
 
 import feign.hystrix.FallbackFactory;
 
@@ -22,7 +22,8 @@ import feign.hystrix.FallbackFactory;
 @Component
 public class TestFallBack2 implements FallbackFactory<MyBase>, ApplicationContextAware {
 	private Object proxy;
-	private ThreadLocal<Throwable> local=new ThreadLocal<>();;
+	private ThreadLocal<Throwable> local = new ThreadLocal<>();;
+
 	@Override
 	public MyBase create(Throwable cause) {
 		local.set(cause);
@@ -35,10 +36,10 @@ public class TestFallBack2 implements FallbackFactory<MyBase>, ApplicationContex
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 		String[] str = applicationContext.getBeanNamesForType(MyBase.class);
-		Class<?> [] classs=new Class[str.length];
-		 for (int i = 0; i < str.length; i++) {
-			 try {
-				classs[i]=Class.forName(str[i]);
+		Class<?>[] classs = new Class[str.length];
+		for (int i = 0; i < str.length; i++) {
+			try {
+				classs[i] = Class.forName(str[i]);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -49,8 +50,7 @@ public class TestFallBack2 implements FallbackFactory<MyBase>, ApplicationContex
 				return null;
 			}
 		};
-		this.proxy= Proxy.newProxyInstance(getClass().getClassLoader(), classs,
-				invocationHandler);
+		this.proxy = Proxy.newProxyInstance(getClass().getClassLoader(), classs, invocationHandler);
 	}
 
 }

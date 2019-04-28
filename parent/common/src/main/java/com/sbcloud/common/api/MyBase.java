@@ -1,4 +1,4 @@
-package com.sbcloud.api;
+package com.sbcloud.common.api;
 
 public interface MyBase {
 

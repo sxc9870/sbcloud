@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.sbcloud.api.TestService;
+import com.sbcloud.common.api.TestService;
+import com.sbcloud.common.pojo.ServiceCommPojo;
 import com.sbcloud.dao.TargetRepository;
-import com.sbcloud.pojo.ServiceCommPojo;
 import com.sbcloud.pojo.TestModel;
 
 @RestController
@@ -46,12 +45,7 @@ public class TestServiceImpl implements TestService {
 		return null;
 	}
 
-	@Override
-	public ServiceCommPojo test2(String orderNo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	 
 	@HystrixCommand(fallbackMethod = "fall")
 	@GetMapping("/getPort2")
 	public Object aaa() throws InterruptedException {
