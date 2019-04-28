@@ -5,13 +5,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sbcloud.common.api.TestService;
+import com.sbcloud.common.api.user.UserService;
+
 
 @RestController
 public class FeignController {
 
 	@Autowired
-	private TestService testService;
+	private UserService testService;
  
 
 	@GetMapping("/AAAAAAuth")

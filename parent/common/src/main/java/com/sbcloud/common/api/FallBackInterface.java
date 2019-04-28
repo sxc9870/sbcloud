@@ -1,5 +1,5 @@
 package com.sbcloud.common.api;
 
-public interface MyBase {
+public interface FallBackInterface {
 
 }

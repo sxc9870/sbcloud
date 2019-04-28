@@ -4,12 +4,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-import com.sbcloud.common.api.MyBase;
+import com.sbcloud.common.SrpringContext;
+import com.sbcloud.common.api.FallBackInterface;
 
 import feign.hystrix.FallbackFactory;
 
@@ -20,22 +18,18 @@ import feign.hystrix.FallbackFactory;
  *
  */
 @Component
-public class TestFallBack2 implements FallbackFactory<MyBase>, ApplicationContextAware {
+public class UserFallBack implements FallbackFactory<FallBackInterface>  {
 	private Object proxy;
 	private ThreadLocal<Throwable> local = new ThreadLocal<>();;
 
 	@Override
-	public MyBase create(Throwable cause) {
+	public FallBackInterface create(Throwable cause) {
 		local.set(cause);
-		return (MyBase) proxy;
+		return (FallBackInterface) proxy;
 	}
 
-	private ApplicationContext applicationContext;
-
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		this.applicationContext = applicationContext;
-		String[] str = applicationContext.getBeanNamesForType(MyBase.class);
+	public UserFallBack() {
+		String[] str = SrpringContext.getApplicationContext().getBeanNamesForType(FallBackInterface.class);
 		Class<?>[] classs = new Class[str.length];
 		for (int i = 0; i < str.length; i++) {
 			try {
@@ -51,6 +45,8 @@ public class TestFallBack2 implements FallbackFactory<MyBase>, ApplicationContex
 			}
 		};
 		this.proxy = Proxy.newProxyInstance(getClass().getClassLoader(), classs, invocationHandler);
+		System.out.println("UserFallBack init ");
 	}
+ 
 
 }
