@@ -28,7 +28,7 @@ import org.springframework.web.client.RestTemplate;
 //@EnableCircuitBreaker // 断路器
 @EnableHystrix  //继承上面EnableCircuitBreaker
 //@RibbonClient(name="default.foo",configuration = Foo.class)
-//@EnableFeignClients
+@EnableFeignClients
 public class StartApplication {
 
 	/**

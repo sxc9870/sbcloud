@@ -26,8 +26,8 @@ zuul:
       path: /sxc1/**
       serviceId: consume
     sxcsxc:
-      path: /login/zuulTest
-      serviceId: consume
+      path: /sxc2/**
+      serviceId: eurekaclient
     needLoginPath:
       path: /**/**Auth
       serviceId: consume
@@ -35,12 +35,12 @@ zuul:
 sxc:
   zuul: 
     filters:
-       needLoginRoutes: sxcsxc,needLoginPath
+       needLoginRoutes: needLoginPath
 ribbon:
-##    超过 ReadTimeout 会重试  
-  ReadTimeout: 5000       
+##    超过 ReadTimeout 会重试   超时504 Hystrix Readed time out
+  ReadTimeout: 2000       
     ##超过 降级不重试
-  ConnectTimeout: 5000
+  ConnectTimeout: 2000
   MaxAutoRetries: 1 #同一台实例最大重试次数,不包括首次调用
   MaxAutoRetriesNextServer: 1 #重试负载均衡其他的实例最大重试次数,不包括首次调用
   OkToRetryOnAllOperations: false  #是否所有操作都重试   get默认会重试
@@ -53,5 +53,5 @@ hystrix:
                 enabled: true
               isolation:
                 thread:  
-                     ## 超过 timeoutInMilliseconds 不会重试
-                   timeoutInMilliseconds: 6000    
+                     ## 超过 timeoutInMilliseconds 不会重试  超时500 TIMEOUT
+                   timeoutInMilliseconds: 3000    

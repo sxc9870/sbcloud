@@ -27,6 +27,7 @@ public class MyZuulErrorFilter2 extends SendErrorFilter {
 		JSONObject json=new JSONObject();
 		try {
 			json.put("code:", exception.getStatusCode());
+			json.put("message:", exception.getErrorCause());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
