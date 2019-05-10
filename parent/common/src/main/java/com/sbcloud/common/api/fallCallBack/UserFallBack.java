@@ -53,6 +53,8 @@ public class UserFallBack implements FallbackFactory<FallBackInterface> {
 					a = "沒有找到可用服务,请稍后重试";
 				} else if (a.contains("Hystrix circuit short-circuited and is OPEN")) {
 					a = "断路器打开中,请稍后重试";
+				}else if (a.contains("Read timed out")) {
+					a = "请求超时";
 				}
 				return new ResponseEntity<>(a, HttpStatus.INTERNAL_SERVER_ERROR);
 			}

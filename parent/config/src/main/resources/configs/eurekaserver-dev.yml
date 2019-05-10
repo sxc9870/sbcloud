@@ -1,7 +1,7 @@
 profile: dev
 cloud: 123
 server:
-  port: 10001
+  port: ${eurekaServerPort}
 eureka:
   instance:
      hostname: eureka-dev
@@ -13,7 +13,7 @@ eureka:
      #改变 registered-replicas 和unavailable-replicas 的地址
      ##客户端默认去这个地址找注册中心
      service-url:
-       defaultZone: http://localhost:10001/eureka
+       defaultZone: ${eurekaUrl}
   server:
      ##启动同步等待
      wait-time-in-ms-when-sync-empty: 0

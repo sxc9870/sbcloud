@@ -1,6 +1,6 @@
 spring:
   application:
-    name: consume
+    name: monitor
   profiles:
     active: dev
   cloud:
@@ -8,7 +8,7 @@ spring:
       username: sxc
       password: 123456
       #这个要跟yml同名 后面active可以省略
-      name: consume
+      name: monitor
       uri: http://localhost:8881
         
         
@@ -17,4 +17,3 @@ management:
     web:
       exposure:
         include: "*"
-        

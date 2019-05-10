@@ -19,5 +19,8 @@ public class FeignController {
 	public ResponseEntity<?> ftest6() throws Exception {
 		throw new Exception();
 	}
-
+	@GetMapping("/test")
+	public ResponseEntity<?> test() throws Exception {
+		return testService.test();
+	}
 }

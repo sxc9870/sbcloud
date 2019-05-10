@@ -2,7 +2,7 @@ spring:
   application:
     name: eurekaclient
   profiles:
-    active: dev
+    active: dev2
   cloud:
     config:
       username: sxc

@@ -1,7 +1,11 @@
+
+
+
+
 spring:
   profiles:
-    active: native
-    ##引入账号密码机制 需要导入starter-security
+    active: native
+         ##引入账号密码机制 需要导入starter-security
         
 encrypt:
   #key: "sxc9999"

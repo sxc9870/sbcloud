@@ -7,6 +7,14 @@ spring:  application:    name: config-server
            search-locations: classpath:configs/
         encrypt:
           enabled: true
+        overrides:
+          eurekaUrl: http://localhost:10001/eureka
+          eurekaServerPort: 10001
+          eurekaClientPort: 20002   
+          consumePort: 30001
+          consumePort2: 30002
+          monitorPort: 7777    
+          zuul: 7001   
   security:
     user:
       name: sxc
@@ -17,4 +25,9 @@ spring:  application:    name: config-server
     password: guest
     port: 5672                
 #端点 以配置的方式 开关暴露的监控信息 actuator/health 访问
-management:  endpoints:    web:      exposure:        include: "*"         
+management:  endpoints:    web:      exposure:        include: "*"
+  endpoint:
+      health:
+        show-details:    always
+      shutdown:
+        enabled: true  

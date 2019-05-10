@@ -1,0 +1,19 @@
+cloud: '123'
+abc: 123
+server:
+  port: ${monitorPort}
+eureka:
+  client:
+     fetch-registry: true
+     register-with-eureka: true
+     service-url:
+       defaultZone: ${eurekaUrl}
+spring:
+  security:
+     basic: 
+       enabled: false
+turbine:
+  aggregator:
+    cluster-config: default
+  app-config: CONSUME
+  cluster-name-expression: new String("default")
