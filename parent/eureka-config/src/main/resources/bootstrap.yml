@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: eureka-monitor
+  profiles:
+    active: dev
+  cloud:
+    config:
+      username: sxc
+      password: 123456
+      #这个要跟yml同名 后面active可以省略
+      name: eurekaMmonitor
+      uri: http://localhost:8881
+        
+        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

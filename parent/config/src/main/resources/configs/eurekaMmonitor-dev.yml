@@ -1,0 +1,30 @@
+cloud: '123'
+abc: 123
+server:
+  port: 10002
+eureka:
+   client:
+     #检索服务
+     fetch-registry: true
+     # 是否注册自己
+     register-with-eureka: true
+     #改变 registered-replicas 和unavailable-replicas 的地址
+     ##客户端默认去这个地址找注册中心
+     service-url:
+       defaultZone: ${eurekaUrl}
+   server:
+     ##启动同步等待
+     wait-time-in-ms-when-sync-empty: 0
+     ##关闭自我保护
+     enable-self-preservation: false
+     ##数据更新间隔
+     peer-eureka-nodes-update-interval-ms: 6000
+spring:
+  security:
+     basic: 
+       enabled: false
+turbine:
+  aggregator:
+    cluster-config: default
+  app-config: CONSUME
+  cluster-name-expression: new String("default")

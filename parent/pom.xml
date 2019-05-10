@@ -14,6 +14,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.sbcloud.StartApplication</start-class>
+		<defaultZone>http://localhost:10001/eureka,http://localhost:10002/eureka</defaultZone>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
