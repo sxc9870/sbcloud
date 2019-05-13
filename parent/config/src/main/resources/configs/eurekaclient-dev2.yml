@@ -32,8 +32,14 @@ hystrix:
                      ## 超过 timeoutInMilliseconds 不会重试
                    timeoutInMilliseconds: 3000
 spring:
-   main:
-    allow-bean-definition-overriding: true                        
+    zipkin:
+      #enabled: true
+      base-url: ${zipkinUrl}
+    sleuth:
+      sampler:
+         probability: 1.0
+    main:
+       allow-bean-definition-overriding: true                          
 ribbon:
 ##    超过 ReadTimeout 会重试  
   ReadTimeout: 2000       

@@ -9,6 +9,18 @@ eureka:
      service-url:
        defaultZone: ${eurekaUrl}
 
+
+spring:
+    zipkin:
+    #  enabled: true
+      base-url: ${zipkinUrl}
+    sleuth:
+      sampler:
+         #2.0 是这个参数,1.0 是percentage
+         probability: 1.0
+    main:
+      allow-bean-definition-overriding: true          
+
 #打开以后fegin 超时才会降级
 feign:
   hystrix:
@@ -23,9 +35,6 @@ hystrix:
                 thread:  
                      ## 超过 timeoutInMilliseconds 不会重试
                    timeoutInMilliseconds: 3000
-spring:
-   main:
-    allow-bean-definition-overriding: true                        
 ribbon:
 ##    超过 ReadTimeout 会重试  
   ReadTimeout: 1000       

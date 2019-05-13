@@ -1,6 +1,6 @@
 spring:
   application:
-    name: zuul
+    name: sleuth
   profiles:
     active: dev
   cloud:
@@ -8,7 +8,7 @@ spring:
       username: sxc
       password: 123456
       #这个要跟yml同名 后面active可以省略
-      name: zuul
+      name: sleuth
       uri: http://localhost:8881
         
         

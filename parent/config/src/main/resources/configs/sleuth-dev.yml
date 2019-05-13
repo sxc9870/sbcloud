@@ -1,0 +1,15 @@
+cloud: '123'
+abc: 123
+server:
+  port: 40001
+eureka:
+  client:
+     fetch-registry: true
+     register-with-eureka: true
+     service-url:
+       defaultZone: ${eurekaUrl}
+management:
+     metrics: 
+         web: 
+           server:
+               auto-time-requests: false       

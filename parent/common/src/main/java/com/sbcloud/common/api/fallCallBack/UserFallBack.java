@@ -6,6 +6,7 @@ import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,8 @@ public class UserFallBack implements FallbackFactory<FallBackInterface> {
 	private Object proxy;
 	private ThreadLocal<Throwable> local = new ThreadLocal<>();;
 
+	@Value("spring.application.name")
+	private String appName;
 	@Override
 	public FallBackInterface create(Throwable cause) {
 		local.set(cause);
@@ -45,7 +48,7 @@ public class UserFallBack implements FallbackFactory<FallBackInterface> {
 		InvocationHandler invocationHandler = new InvocationHandler() {
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-				System.out.println("降級!!");
+				System.out.println(appName+"降級!!");
 				String a = local.get().getMessage();
 				if (a == null) {
 					a = local.get().toString();
@@ -55,6 +58,8 @@ public class UserFallBack implements FallbackFactory<FallBackInterface> {
 					a = "断路器打开中,请稍后重试";
 				}else if (a.contains("Read timed out")) {
 					a = "请求超时";
+				}else if(a.contains("HystrixTimeoutException")) {
+					a = "断路器超时";
 				}
 				return new ResponseEntity<>(a, HttpStatus.INTERNAL_SERVER_ERROR);
 			}

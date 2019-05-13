@@ -1,12 +1,15 @@
 package com.sbcloud.services.impl;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.sbcloud.common.api.user.UserService;
@@ -35,7 +38,7 @@ public class TestServiceImpl implements UserService {
 
 	@GetMapping("/getPort3")
 	public Object aaa3() throws InterruptedException {
-		return aaa + ":" + userService.test().getBody();
+		return aaa + ":" + userService.test( ).getBody();
 	}
 
 	public Object fall() {
@@ -50,8 +53,8 @@ public class TestServiceImpl implements UserService {
 
 	@Override
 	public ResponseEntity<String> test() {
-		System.out.println("test");
-		System.out.println("test2");
+		HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		System.out.println(req.getHeaderNames());
 		return ResponseEntity.ok("test");
 	}
 }
