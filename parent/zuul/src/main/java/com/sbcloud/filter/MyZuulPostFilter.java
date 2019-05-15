@@ -1,22 +1,25 @@
 package com.sbcloud.filter;
 
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.http.HttpStatus;
+import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.POST_TYPE;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ReflectionUtils;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import com.sbcloud.MyZuulConfig;
-import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import brave.Tracer;
 @Component
 public class MyZuulPostFilter extends ZuulFilter {
 	private MyZuulConfig yyZuulConfig;
+	
+	
+	@Autowired
+	private Tracer tracer;
 	public MyZuulPostFilter(MyZuulConfig m) {
 		this.yyZuulConfig=m;
 	}
@@ -33,6 +36,10 @@ public class MyZuulPostFilter extends ZuulFilter {
 		RequestContext ctx=RequestContext.getCurrentContext();
 		HttpServletResponse ss=	ctx.getResponse();
 		ss.getStatus();
+		
+		tracer.currentSpan().tag("sxc", "vvv");
+		
+		System.out.println(tracer.currentSpan().toString());
 		return null;
 	}
 	
@@ -49,7 +56,7 @@ public class MyZuulPostFilter extends ZuulFilter {
 	 */
 	@Override
 	public int filterOrder() {
-		return 6;
+		return 900;
 	}
 
 }
