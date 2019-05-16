@@ -8,10 +8,7 @@ eureka:
      register-with-eureka: true
      service-url:
        defaultZone: ${eurekaUrl}
-
-
 spring:
-   
     zipkin:
     #  enabled: true
       base-url: ${zipkinUrl}

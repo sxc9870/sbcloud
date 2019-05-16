@@ -15,7 +15,7 @@ spring:  application:    name: config-server
           consumePort2: 30002
           monitorPort: 7777    
           zuulPort: 7001   
-          zipkinUrl: http://eurekaMmonitor
+          zipkinUrl: http://EUREKA-MONITOR
           # adminUrl: http://admin
   security:
     user:

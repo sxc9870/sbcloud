@@ -45,7 +45,7 @@ public class MyZuulFallBack implements FallbackProvider {
 
 			@Override
 			public InputStream getBody() throws IOException {
-				return new ByteArrayInputStream("The service is unavailable.".getBytes());
+				return new ByteArrayInputStream("The bnm.".getBytes());
 			}
 
 			@Override

@@ -48,8 +48,12 @@ public class UserFallBack implements FallbackFactory<FallBackInterface> {
 		InvocationHandler invocationHandler = new InvocationHandler() {
 			@Override
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-				System.out.println(appName+"降級!!");
 				String a = local.get().getMessage();
+				a = getResult(a);
+				return new ResponseEntity<>(a, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+			private String getResult(String a) {
 				if (a == null) {
 					a = local.get().toString();
 				} else if (a.contains("Load balancer does not have available server for client: ")) {
@@ -61,7 +65,7 @@ public class UserFallBack implements FallbackFactory<FallBackInterface> {
 				}else if(a.contains("HystrixTimeoutException")) {
 					a = "断路器超时";
 				}
-				return new ResponseEntity<>(a, HttpStatus.INTERNAL_SERVER_ERROR);
+				return a;
 			}
 		};
 		this.proxy = Proxy.newProxyInstance(getClass().getClassLoader(), classs.toArray(new Class[0]),
