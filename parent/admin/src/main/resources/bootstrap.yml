@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: admin
+  profiles:
+    active: dev
+  cloud:
+    config:
+      username: sxc
+      password: 123456
+      #这个要跟yml同名 后面active可以省略
+      name: admin
+      uri: http://localhost:8881
+        
+        

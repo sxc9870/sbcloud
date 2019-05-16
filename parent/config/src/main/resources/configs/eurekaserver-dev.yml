@@ -28,8 +28,8 @@ management:
       exposure:
         include: "*"
 spring:
- rabbitmq:
-    host: 192.168.239.135
-    username: guest
-    password: guest
-    port: 5672 
+    rabbitmq:
+      host: 192.168.239.135
+      username: guest
+      password: guest
+      port: 5672 

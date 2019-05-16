@@ -1,0 +1,31 @@
+cloud: '123'
+abc: 123
+server:
+  port: 5000
+eureka:
+  instance:
+     leaseRenewalIntervalInSeconds: 10
+     health-check-url-path: /actuator/health
+  client:
+     registryFetchIntervalSeconds: 5
+     fetch-registry: true
+     register-with-eureka: true
+     service-url:
+       defaultZone: ${eurekaUrl}
+logging:
+   file: "d://admin.log"
+spring:
+    main:
+      allow-bean-definition-overriding: true          
+    security:
+      user:
+        name: "user"
+        password: "password"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  
+  endpoint:
+    health:
+      show-details: ALWAYS

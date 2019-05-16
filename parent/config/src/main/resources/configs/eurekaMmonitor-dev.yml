@@ -23,8 +23,16 @@ spring:
   security:
      basic: 
        enabled: false
+zipkin: 
+    ui: 
+     enabled: false
 turbine:
   aggregator:
     cluster-config: default
   app-config: CONSUME
   cluster-name-expression: new String("default")
+management:
+      metrics:
+           web:
+             server:
+                auto-time-requests: false

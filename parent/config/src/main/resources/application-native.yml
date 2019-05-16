@@ -8,14 +8,15 @@ spring:  application:    name: config-server
         encrypt:
           enabled: true
         overrides:
-          eurekaUrl: http://localhost:10001/eureka
-          eurekaServerPort: 10001
+          eurekaUrl: http://localhost:10002/eureka
+          eurekaServerPort: 10002
           eurekaClientPort: 20002   
           consumePort: 30001
           consumePort2: 30002
           monitorPort: 7777    
           zuulPort: 7001   
-          zipkinUrl: http://SLEUTH:40001
+          zipkinUrl: http://eurekaMmonitor
+          # adminUrl: http://admin
   security:
     user:
       name: sxc

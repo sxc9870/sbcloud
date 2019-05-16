@@ -10,11 +10,23 @@ eureka:
     # register-with-eureka: true
      service-url:
        defaultZone: ${eurekaUrl}
-
+       
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 spring:
-    zipkin:
+    #boot:  admin挂在eureka上面就不需要单独配置
+     #  admin:
+     #     client:
+      #      url: ${adminUrl}
+    zipkin: 
       #enabled: true
       base-url: ${zipkinUrl}
     sleuth:
       sampler:
          probability: 1
+      web:
+         enabled: true
+         skip-pattern: "/api-docs.*|/instances|/autoconfig|/configprops|/dump|/health|/info|/metrics.*|/mappings|/trace|/swagger.*|.*\\.png|.*\\.css|.*\\.js|.*\\.html|/favicon.ico|/hystrix.stream"

@@ -8,6 +8,11 @@ eureka:
      register-with-eureka: true
      service-url:
        defaultZone: ${eurekaUrl}
+#spring:
+    #boot:
+     #  admin:
+       #   client:
+       #     url: ${adminUrl}
 management:
      metrics: 
          web: 
